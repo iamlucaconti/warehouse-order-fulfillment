@@ -18,7 +18,7 @@
   (:predicates
     ;; ---- robot and map ----
     (at ?r - robot ?l - location)
-    (connected ?l1 - location ?l2 - location)
+    (adj ?l1 - location ?l2 - location)
 
     ;; ---- shelves and stations ----
     (shelf-at ?s - shelf ?l - location)
@@ -32,7 +32,7 @@
     ;; ---- orders ----
     (order-requires ?o - order ?i - item)
     (item-delivered ?o - order ?i - item)
-    (order-delivered ?o - order)
+    (order-completed ?o - order)
   )
 
   (:functions
@@ -45,7 +45,7 @@
     :parameters (?r - robot ?from - location ?to - location)
     :precondition (and
       (at ?r ?from)
-      (connected ?from ?to)
+      (adj ?from ?to)
     )
     :effect (and
       (not (at ?r ?from))
@@ -97,10 +97,10 @@
     :precondition (and
       (order-requires ?o ?i)
       (item-delivered ?o ?i)
-      (not (order-delivered ?o))
+      (not (order-completed ?o))
     )
     :effect (and
-      (order-delivered ?o)
+      (order-completed ?o)
     )
   )
 )

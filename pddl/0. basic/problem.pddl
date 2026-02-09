@@ -39,40 +39,40 @@
     ;; -------- grid connectivity 4x4 --------
 
     ;; row 1
-    (connected l11 l12) (connected l12 l11)
-    (connected l12 l13) (connected l13 l12)
-    (connected l13 l14) (connected l14 l13)
+    (adj l11 l12) (adj l12 l11)
+    (adj l12 l13) (adj l13 l12)
+    (adj l13 l14) (adj l14 l13)
 
     ;; row 2
-    (connected l21 l22) (connected l22 l21)
-    (connected l22 l23) (connected l23 l22)
-    (connected l23 l24) (connected l24 l23)
+    (adj l21 l22) (adj l22 l21)
+    (adj l22 l23) (adj l23 l22)
+    (adj l23 l24) (adj l24 l23)
 
     ;; row 3
-    (connected l31 l32) (connected l32 l31)
-    (connected l32 l33) (connected l33 l32)
-    (connected l33 l34) (connected l34 l33)
+    (adj l31 l32) (adj l32 l31)
+    (adj l32 l33) (adj l33 l32)
+    (adj l33 l34) (adj l34 l33)
 
     ;; row 4
-    (connected l41 l42) (connected l42 l41)
-    (connected l42 l43) (connected l43 l42)
-    (connected l43 l44) (connected l44 l43)
+    (adj l41 l42) (adj l42 l41)
+    (adj l42 l43) (adj l43 l42)
+    (adj l43 l44) (adj l44 l43)
 
     ;; columns
-    (connected l11 l21) (connected l21 l11)
-    (connected l12 l22) (connected l22 l12)
-    (connected l13 l23) (connected l23 l13)
-    (connected l14 l24) (connected l24 l14)
+    (adj l11 l21) (adj l21 l11)
+    (adj l12 l22) (adj l22 l12)
+    (adj l13 l23) (adj l23 l13)
+    (adj l14 l24) (adj l24 l14)
 
-    (connected l21 l31) (connected l31 l21)
-    (connected l22 l32) (connected l32 l22)
-    (connected l23 l33) (connected l33 l23)
-    (connected l24 l34) (connected l34 l24)
+    (adj l21 l31) (adj l31 l21)
+    (adj l22 l32) (adj l32 l22)
+    (adj l23 l33) (adj l33 l23)
+    (adj l24 l34) (adj l34 l24)
 
-    (connected l31 l41) (connected l41 l31)
-    (connected l32 l42) (connected l42 l32)
-    (connected l33 l43) (connected l43 l33)
-    (connected l34 l44) (connected l44 l34)
+    (adj l31 l41) (adj l41 l31)
+    (adj l32 l42) (adj l42 l32)
+    (adj l33 l43) (adj l43 l33)
+    (adj l34 l44) (adj l44 l34)
 
     ;; cost
     (= (total-cost) 0)
@@ -82,10 +82,10 @@
     (and
       ;; order1 and order2
       (item-delivered order1 itemA)
-      (order-delivered order1)
+      (order-completed order1)
 
       (item-delivered order2 itemB)
-      (order-delivered order2)
+      (order-completed order2)
     )
   )
 

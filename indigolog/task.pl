@@ -21,7 +21,7 @@ actionNum(X, X).
 % DOMAIN PARAMETERS (Static)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Grid dim
-width(2).
+width(3).
 height(1).
 
 robot(r1).
@@ -29,9 +29,9 @@ robot(r1).
 capacity(r1, 3).
 
 % item_info(ID, InitX, InitY, Weight)
-item_info(i1, 0, 0, 1).
-item_info(i2, 0, 0, 2).
-item_info(i3, 1, 0, 3).
+item_info(i1, 1, 0, 1).
+item_info(i2, 2, 0, 2).
+item_info(i3, 2, 0, 3).
 
 % Helper 
 item(I) :- item_info(I, _, _, _).
@@ -47,7 +47,7 @@ order_requires(o2, i2).
 station(0, 0).
 
 % recharging station
-recharge_station(1, 0).
+recharge_station(0, 0).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FLUENTS (Dynamic)

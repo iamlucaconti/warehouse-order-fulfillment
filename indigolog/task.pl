@@ -442,46 +442,6 @@ proc(control(indigolog),
 ).
 
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% LEGALITY TASK
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-proc(actions_legality, [
-    pick_up(r1, i1, 0, 0),
-    right(r1),
-    left(r1),
-    drop_off(r1, i1, o1, 0, 0)
-]).
-
-% Predicate to run the test
-legality :-
-    indigolog(actions_legality).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PROJECTION TASK B (Carrying)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-proc(fcond_carry, carrying(r1, i1)).
-
-proc(actions_seq_carry, [
-    pick_up(r1, i1, 0, 0)
-]).
-
-projection_carry :-
-    indigolog([actions_seq_carry, ?(fcond_carry)]).
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Eval definition
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-eval(Fluent, History, Value) :- holds(Fluent = Value, History).
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LEGALITY 
 % indigolog([a1, ..., an]).
@@ -491,7 +451,7 @@ test_legality :-
     writeln('--- START LEGALITY CHECK ---'),
     Actions = [
         right(r1),
-        pick_up(r1, i3, 2, 0),
+        pick_up(r1, i3, 1, 0),
         left(r1),
         drop_off(r1, i3, o1, 0, 0)
     ],

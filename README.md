@@ -22,7 +22,22 @@ We define three planning problems of increasing complexity:
 The warehouse grid is 4×4. Each action is associated with a cost, enabling the comparison of alternative strategies and the computation of cost-optimal plans..
 
 ## Planners & heuristics
-TODO:
+Fast Downward was **not suitable** for our **medium** and **hard** domains due to its limited support for:
+
+- numeric fluents
+- quantified preconditions
+- complex numeric constraints.
+
+For this reason, we employed **ENHSP**, that supports classic and **numeric planning**. The following planners were used:
+
+- **sat-hadd**: **Greedy Best-First Search** combined with numeric $h^{add}$ ; it provides fast but **sub-optimal** solutions.
+- **opt-hmax**: $h^{max}$ paired with the hmax heuristic; since $h^{max}$ is admissible, it guarantees **optimal** solutions. 
+
+To execute the reasoning tasks, navigate to the ENHSP directory and run:
+```
+java -jar enhsp.jar -o <domain_file> -f <problem_file> -planner opt-hmax
+```
+You can replace `opt-hmax` with `sat-hadd` depending on whether you need optimality or faster (sub-optimal) solutions.
 
 # Indigolog-based reasoning
 The project integrates Indigolog to provide reasoning capabilities beyond classical planning, allowing the system to deal with nondeterminism and exogenous events.
@@ -33,6 +48,8 @@ The project integrates Indigolog to provide reasoning capabilities beyond classi
 - `smart_search`: A search-based controller.
 - `congolog`: A deterministic controller capable of handling exogenous events
 - `indigolog`: An extension of the `smart_search` controller that explicitly reasons about exogenous events.
+
+
 
 ## How to run
 
